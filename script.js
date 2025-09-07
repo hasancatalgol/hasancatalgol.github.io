@@ -38,14 +38,10 @@
   tick();
 
   // Theme toggle
-  const toggle = document.getElementById('themeToggle');
   const root = document.documentElement;
   const stored = localStorage.getItem('jj-theme');
-  if(stored){ root.setAttribute('data-theme', stored); toggle.setAttribute('aria-pressed', stored==='day'); }
   toggle?.addEventListener('click', () => {
-    const isDay = root.getAttribute('data-theme') === 'day';
     const next = isDay ? 'night' : 'day';
-    if(next === 'night'){ root.removeAttribute('data-theme'); } else { root.setAttribute('data-theme','day'); }
     localStorage.setItem('jj-theme', next);
     toggle.setAttribute('aria-pressed', String(next==='day'));
   });
@@ -67,4 +63,42 @@
   // Year
   const year = document.getElementById('year');
   if(year) year.textContent = new Date().getFullYear();
+})();
+
+// Blizzard transition on internal same-site links (spawns from top-right)
+(function(){
+  const overlay = document.querySelector('.blizzard-overlay');
+  let canvas = document.getElementById('blizzardCanvas');
+  if(!overlay){
+    // inject if missing (on index)
+    const o = document.createElement('div'); o.className='blizzard-overlay'; o.setAttribute('aria-hidden','true');
+    canvas = document.createElement('canvas'); canvas.id='blizzardCanvas';
+    const wash = document.createElement('div'); wash.className='blizzard-wash';
+    o.appendChild(canvas); o.appendChild(wash); document.body.appendChild(o);
+  }
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  function size(){canvas.width=canvas.offsetWidth; canvas.height=canvas.offsetHeight;}
+  window.addEventListener('resize', size); size();
+  let raf;
+  function flake(w,h){return{x:w-40*Math.random(),y:-20*Math.random(),vx:-(1.5+2.5*Math.random()),vy:1+2.5*Math.random(),r:1+2*Math.random(),a:.6+.4*Math.random(),life:600+600*Math.random()};}
+  function start(ms=900){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+    document.querySelector('.blizzard-overlay').classList.add('active');
+    const w=canvas.width,h=canvas.height; let pts=[]; for(let i=0;i<250;i++) pts.push(flake(w,h));
+    let t0=performance.now();
+    function step(t){ const dt=Math.min(32,t-(t0||t)); t0=t; ctx.clearRect(0,0,w,h);
+      for(let p of pts){ p.x+=p.vx*dt/16; p.y+=p.vy*dt/16; p.vx*=.995; p.vy=Math.min(p.vy+.01,4); p.life-=dt;
+        ctx.globalAlpha=p.a*Math.max(0,Math.min(1,p.life/600)); ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle='#fff'; ctx.fill();}
+      pts=pts.filter(p=>p.life>0&&p.y<h+10); raf=requestAnimationFrame(step); }
+    cancelAnimationFrame(raf); raf=requestAnimationFrame(step); return true;
+  }
+  function stop(){ const ov=document.querySelector('.blizzard-overlay'); if(ov){ ov.classList.remove('active'); } cancelAnimationFrame(raf); ctx.clearRect(0,0,canvas.width,canvas.height); }
+  document.addEventListener('click', (e)=>{
+    const a=e.target.closest('a[href]'); if(!a) return;
+    const href=a.getAttribute('href')||'';
+    if(href.startsWith('#')||href.startsWith('mailto:')||href.startsWith('tel:')||a.target==='_blank') return;
+    e.preventDefault(); const ok=start(900); if(!ok){ location.href=href; return;} setTimeout(()=>location.href=href,900);
+  }, true);
+  window.addEventListener('pageshow', ()=> setTimeout(stop, 100));
 })();

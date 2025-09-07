@@ -211,3 +211,32 @@ body{
   .stand-grid{grid-template-columns: 1fr}
   .gallery{grid-template-columns: 1fr 1fr}
 }
+
+/* Keep layout width stable across pages (no wiggle when scrollbar appears) */
+html{scrollbar-gutter: stable both-edges;}
+@supports not (scrollbar-gutter: stable){html{overflow-y: scroll;}}
+
+/* Make content and footer share the same solid BG (no banding) */
+.page-content{background: var(--bg) !important; position:relative; z-index:0;}
+.site-footer.section{background: var(--bg) !important;}
+.section-dots,.section-diamond{background: transparent !important;}
+.section::before,.section::after{content:none !important;}
+
+/* Consistent hero height across subpages */
+.hero{min-height:88vh;}
+
+/* Contact page helpers */
+.icon{display:inline-flex; vertical-align:middle; margin-right:.25rem}
+.map-wrap{position:relative; width:100%; padding-top:56.25%; border:1px solid var(--border); border-radius:.6rem; overflow:hidden; box-shadow: var(--shadow)}
+.map-wrap iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+
+/* Hide any leftover back-to-home button rectangles */
+.back-to-home,.page-back{display:none !important;}
+
+/* Blizzard transition overlay */
+.blizzard-overlay{position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:0; transition:opacity .2s ease-out;}
+.blizzard-overlay.active{opacity:1; pointer-events:auto;}
+#blizzardCanvas{position:absolute; inset:0; width:100%; height:100%; display:block;}
+.blizzard-wash{position:absolute; inset:0; background: radial-gradient(circle at 100% 0%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.85) 30%, rgba(255,255,255,.75) 50%, rgba(255,255,255,0) 65%); mix-blend-mode: screen; animation: blizzardGrow .9s ease-in forwards; transform-origin: top right;}
+@keyframes blizzardGrow{0%{transform: scale(0.25); opacity:0;} 20%{opacity:.7} 100%{transform: scale(6); opacity:1;}}
+@media (prefers-reduced-motion: reduce){ .blizzard-wash{animation:none; transform:none; opacity:1;} }
