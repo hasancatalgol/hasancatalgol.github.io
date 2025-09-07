@@ -1,47 +1,194 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hasan Çatalgöl — Portfolio</title>
-  <meta name="description" content="Portfolio homepage" />
-  <link rel="icon" href="assets/favicon.svg">
-  <link rel="stylesheet" href="styles.css" />
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>JoJo’s Blizzard Adventure — A Stylish GitHub Pages Template</title>
+<meta content="A sleek single-page portfolio template with sections for About, Experience, Projects, Education, Certifications, and Contact." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<!-- Fonts chosen to evoke bold manga titles and elegant flair -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&amp;family=Staatliches&amp;family=Noto+Sans+JP:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet">
+</link></head>
 <body>
-  <div class="noise" aria-hidden="true"></div>
-  <header>
-    <nav class="nav" aria-label="primary">
-      <a class="brand" href="index.html" aria-label="Home">
-        <img class="mark" src="assets/crest.svg" alt="" width="26" height="26" />
-        <span>Hasan Çatalgöl</span>
-      </a>
-      <ul class="menu">
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="experience.html">Experience</a></li>
-        <li><a href="certifications.html">Certifications</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  <section id="top" class="hero" aria-label="Hero">
-    <img class="corners" src="assets/ornate-corners.svg" alt="" aria-hidden="true" />
-    <img class="wisps" src="assets/wisps.svg" alt="" aria-hidden="true" />
-    <canvas id="embers" aria-hidden="true"></canvas>
-    <div class="hero-inner">
-      <h1 class="title">Into the Abyss: <span class="gold">Data & AI</span> by Hasan Çatalgöl</h1>
-      <p class="subtitle">Agentic AI • ML • RL • OR • Data Engineering</p>
-      <div class="cta">
-        <a class="btn gold" href="projects.html">Browse Projects</a>
-        <a class="btn" href="contact.html">Contact</a>
-        <a class="btn" href="about.html">About</a>
-      </div>
-    </div>
-  </section>
-  <footer>
-    <p>© <span id="year"></span> Hasan Çatalgöl • Original dark‑fantasy homage (unaffiliated).</p>
-  </footer>
-  <script src="script.js"></script>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<nav aria-label="Primary" class="nav container">
+<a aria-label="Home" class="brand" href="#home">
+<svg aria-hidden="true" class="brand-icon" viewbox="0 0 64 64">
+<use href="assets/snowflake.svg#flake"></use>
+</svg>
+<span>Blizzard Adventure</span>
+</a>
+<button aria-controls="menu" aria-expanded="false" class="nav-toggle">Menu</button>
+<ul class="menu" id="menu">
+<li><a href="#about">About</a></li>
+
+<li><a href="#episodes">Episodes</a></li>
+
+<li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#education">Education</a></li><li><a href="#certifications">Certifications</a></li><li><a href="#contact">Contact</a></li></ul>
+</nav>
+</header>
+<main id="main">
+<!-- Hero -->
+<section class="hero" id="home">
+<canvas aria-hidden="true" id="snow"></canvas>
+<div class="hero-inner container">
+<p aria-hidden="true" class="menacing">ゴゴゴゴ</p>
+<h1 class="title">
+<span class="title-top">JoJo’s</span>
+<span class="title-mid">Blizzard</span>
+<span class="title-btm">Adventure</span>
+</h1>
+<p class="subtitle">An original homage with frosty flair ❄️</p>
+<div class="cta">
+<a class="btn btn-primary" href="#about">Begin the Journey</a>
+<a class="btn btn-ghost" href="https://github.com/new" rel="noopener" target="_blank">Use on GitHub</a>
+</div>
+</div>
+<div aria-hidden="true" class="sfx">
+<span class="sfx-text">ドドド</span>
+<span class="sfx-text t2">ドドド</span>
+</div>
+</section>
+<!-- About -->
+<section class="section section-dots" id="about">
+<div class="container grid-2">
+<div>
+<h2 class="section-title">About</h2>
+<p>
+            This is a <strong>single-page</strong> template crafted for GitHub Pages. It blends
+            <em>bold title typography</em>, manga-style effects, and a dynamic <strong>blizzard</strong> canvas.
+            Everything here is original and royalty-free—no copyrighted logos or art are included.
+          </p>
+<p>
+            Customize colors, text, and sections to create your own arc. The layout is responsive,
+            accessible, and fast: pure HTML/CSS/JS with no frameworks.
+          </p>
+<div aria-hidden="true" class="badge menacing-badge">ゴゴゴ</div>
+</div>
+<div class="card">
+<h3 class="card-title">Quick Stats</h3>
+<ul class="kv">
+<li><span>Style</span><span>Anime-inspired</span></li>
+<li><span>Theme</span><span>Frost / Night</span></li>
+<li><span>Stack</span><span>HTML • CSS • JS</span></li>
+<li><span>Host</span><span>GitHub Pages</span></li>
+</ul>
+</div>
+</div>
+</section><section class="section section-diamond" id="experience"><div class="container"><h2 class="section-title">Experience</h2>
+<ul class="episodes">
+<li>
+<div class="episode-card">
+<h3><strong>Senior Software Engineer</strong> — Company Name</h3>
+<p><em>Jan 2023 – Present</em></p>
+<p>Briefly describe your impact (e.g., led X project, improved Y metric by Z%).</p>
+</div>
+</li>
+<li>
+<div class="episode-card">
+<h3><strong>Software Engineer</strong> — Company Name</h3>
+<p><em>May 2020 – Dec 2022</em></p>
+<p>Key responsibilities and notable achievements.</p>
+</div>
+</li>
+</ul>
+<p class="note">Tip: replace placeholders with details from your LinkedIn.</p>
+</div></section><section class="section section-diamond" id="projects"><div class="container"><h2 class="section-title">Projects</h2>
+<div class="grid-2">
+<article class="episode-card">
+<h3>Project Alpha</h3>
+<p>What it does, tech stack, and your role.</p>
+<p><a class="btn btn-ghost small" href="#" rel="noopener" target="_blank">View Repo</a></p>
+</article>
+<article class="episode-card">
+<h3>Project Beta</h3>
+<p>What it does, tech stack, and your role.</p>
+<p><a class="btn btn-ghost small" href="#" rel="noopener" target="_blank">Live Demo</a></p>
+</article>
+</div>
+<p class="note">Add more project cards as needed.</p>
+</div></section><section class="section section-diamond" id="education"><div class="container"><h2 class="section-title">Education</h2>
+<ul class="episodes">
+<li>
+<div class="episode-card">
+<h3><strong>Degree / Major</strong> — University Name</h3>
+<p><em>Year – Year</em></p>
+<p>Honors, relevant coursework, or activities.</p>
+</div>
+</li>
+</ul>
+</div></section><section class="section section-diamond" id="certifications"><div class="container"><h2 class="section-title">Certifications</h2>
+<ul class="episodes">
+<li>
+<div class="episode-card">
+<h3><strong>Certification Name</strong> — Issuer</h3>
+<p><em>Issued Month Year</em></p>
+<p>Credential ID / URL (optional)</p>
+</div>
+</li>
+</ul>
+</div></section><section class="section section-diamond" id="contact"><div class="container"><h2 class="section-title">Contact Me</h2>
+<div>
+<p>Want to get in touch? Drop me a line or connect on LinkedIn.</p>
+<p>
+<a class="btn btn-primary" href="mailto:hasan@dekatechs.com">Email Me</a>
+<a class="btn btn-ghost" href="https://www.linkedin.com/in/hasancatalgol/" rel="noopener" target="_blank">LinkedIn</a>
+</p>
+</div>
+</div></section>
+ features 
+
+<!-- Episodes / timeline -->
+<section class="section section-panel" id="episodes">
+<div class="container">
+<h2 class="section-title">Episodes</h2>
+<ol class="timeline">
+<li>
+<div class="bubble">
+<h3>Ep. 1 — Snowbound Prologue</h3>
+<p>The first flake falls, and with it, a whisper of destiny.</p>
+</div>
+</li>
+<li>
+<div class="bubble">
+<h3>Ep. 2 — Echoes in the Ice</h3>
+<p>Footsteps on frozen rivers trace a sigil older than winter.</p>
+</div>
+</li>
+<li>
+<div class="bubble">
+<h3>Ep. 3 — Menacing Horizon</h3>
+<p>The sky curves violet; the wind writes <em>ゴゴゴ</em> in the dark.</p>
+</div>
+</li>
+</ol>
+</div>
+</section>
+<!-- Gallery -->
+
+<!-- Footer -->
+<footer class="site-footer section">
+<div class="container footer-grid">
+<div>
+<h3 class="footer-title">Blizzard Adventure</h3>
+<p>Built with ♥ for GitHub Pages. Original homage; not affiliated with any existing franchise.</p>
+</div>
+<div>
+<h4>Links</h4>
+<ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#education">Education</a></li><li><a href="#certifications">Certifications</a></li><li><a href="#contact">Contact</a></li></ul>
+</div>
+<div>
+<h4>Theme Toggle</h4>
+<button aria-pressed="false" class="btn btn-ghost small" id="themeToggle">Switch Theme</button>
+</div>
+</div>
+<p class="copyright">© <span id="year"></span> Your Name</p>
+</footer>
+</main>
+<script src="script.js"></script>
 </body>
 </html>

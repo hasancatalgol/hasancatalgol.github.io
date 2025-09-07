@@ -1,44 +1,70 @@
-// Embers (only on pages with #embers), copy helpers, year, active nav
+// JoJo’s Blizzard Adventure — script.js
+// Snow canvas, theme toggle, and small interactions
+
 (function(){
-  const c = document.getElementById('embers');
-  if(c){
-    const x = c.getContext('2d');
-    let w,h,embers=[];
-    function resize(){
-      c.width = w = c.offsetWidth; c.height = h = c.offsetHeight;
-      embers = Array.from({length: Math.max(80, Math.floor(w*h/30000))}, () => ({
-        x: Math.random()*w, y: Math.random()*h, r: Math.random()*1.8 + .6,
-        s: Math.random()*0.4 + 0.2, o: Math.random()*0.6 + 0.2
-      }));
-    }
-    window.addEventListener('resize', resize, {passive:true}); resize();
-    (function tick(){
-      x.clearRect(0,0,w,h);
-      for(const p of embers){
-        x.globalAlpha = p.o; x.fillStyle = '#ff7b3e';
-        x.beginPath(); x.arc(p.x, p.y, p.r, 0, Math.PI*2); x.fill();
-        x.fillStyle = '#ffb98d'; x.globalAlpha = p.o*0.4; x.beginPath(); x.arc(p.x-1, p.y-1, p.r*0.6, 0, Math.PI*2); x.fill();
-        p.y -= p.s; p.x += Math.sin(p.y*0.03)*0.2; if(p.y < -5){ p.y = h+5; p.x = Math.random()*w; }
-      }
-      x.globalAlpha = 1; requestAnimationFrame(tick);
-    })();
+  const canvas = document.getElementById('snow');
+  const ctx = canvas.getContext('2d');
+  let w, h, flakes;
+
+  function resize(){
+    w = canvas.width = canvas.offsetWidth;
+    h = canvas.height = canvas.offsetHeight;
+    flakes = Array.from({length: Math.max(80, Math.floor(w*h/12000))}, () => ({
+      x: Math.random()*w,
+      y: Math.random()*h,
+      r: Math.random()*2 + 1.2,
+      s: Math.random()*0.8 + 0.4,   // speed
+      o: Math.random()*0.5 + 0.5    // opacity
+    }));
   }
-})();
+  window.addEventListener('resize', resize, {passive:true});
+  resize();
 
-document.querySelectorAll('.copy').forEach(btn=>{
-  btn?.addEventListener('click', async ()=>{
-    try{ await navigator.clipboard.writeText(btn.dataset.copy); btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy', 1200); }
-    catch(e){ btn.textContent='Select & Copy'; setTimeout(()=>btn.textContent='Copy', 1800); }
+  function tick(){
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    for(const f of flakes){
+      ctx.globalAlpha = f.o;
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI*2);
+      ctx.fill();
+      f.y += f.s;
+      f.x += Math.sin(f.y * 0.01) * 0.3;
+      if(f.y > h+5){ f.y = -5; f.x = Math.random()*w; }
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(tick);
+  }
+  tick();
+
+  // Theme toggle
+  const toggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const stored = localStorage.getItem('jj-theme');
+  if(stored){ root.setAttribute('data-theme', stored); toggle.setAttribute('aria-pressed', stored==='day'); }
+  toggle?.addEventListener('click', () => {
+    const isDay = root.getAttribute('data-theme') === 'day';
+    const next = isDay ? 'night' : 'day';
+    if(next === 'night'){ root.removeAttribute('data-theme'); } else { root.setAttribute('data-theme','day'); }
+    localStorage.setItem('jj-theme', next);
+    toggle.setAttribute('aria-pressed', String(next==='day'));
   });
-});
 
-const yearEl = document.getElementById('year'); if(yearEl) yearEl.textContent = new Date().getFullYear();
-
-// Set active nav link
-(function(){
-  const path = location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.menu a').forEach(a=>{
-    const href = a.getAttribute('href');
-    if(href && (href === path || (path==='index.html' && href==='#top'))) a.classList.add('active');
+  // Mobile menu
+  const navBtn = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('menu');
+  navBtn?.addEventListener('click', () => {
+    const exp = navBtn.getAttribute('aria-expanded') === 'true';
+    navBtn.setAttribute('aria-expanded', String(!exp));
+    menu.style.display = exp ? 'none' : 'flex';
+    menu.style.flexDirection = 'column';
+    menu.style.background = getComputedStyle(document.body).getPropertyValue('--panel');
+    menu.style.padding = '.75rem';
+    menu.style.border = '1px solid ' + getComputedStyle(document.body).getPropertyValue('--border');
+    menu.style.borderRadius = '.5rem';
   });
+
+  // Year
+  const year = document.getElementById('year');
+  if(year) year.textContent = new Date().getFullYear();
 })();
