@@ -1,4 +1,4 @@
-/* Dark Souls–inspired portfolio (original, unaffiliated) */
+/* Dark Souls–style multipage (original, unaffiliated) */
 :root{
   --bg:#0a0b0e; --bg-2:#0e0f14; --ink:#e9e1cf; --muted:#b8b2a3;
   --gold:#c6a767; --ember:#ff7b3e; --brass:#7f6b3b;
@@ -14,7 +14,7 @@ body{
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
   line-height:1.65; overflow-x:hidden;
 }
-.gold{color:var(--gold)}
+.gold{color:var(--gold)} .muted{color:var(--muted)}
 .noise{position:fixed; inset:0; pointer-events:none; z-index:0;
   background:url('assets/vignette.svg'), repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, rgba(0,0,0,.02) 2px 4px);
   mix-blend-mode:soft-light; opacity:.3}
@@ -22,35 +22,31 @@ header{position:sticky; top:0; z-index:20; border-bottom:1px solid #201d16; back
 .nav{max-width:var(--maxw); margin:0 auto; padding:.75rem 1rem; display:flex; align-items:center; gap:1rem}
 .brand{display:flex; align-items:center; gap:.6rem; text-decoration:none; color:var(--ink)}
 .brand span{font-family:Cinzel, serif; font-weight:800; letter-spacing:.04em}
-.brand .mark{width:26px; height:26px; filter: drop-shadow(0 0 6px rgba(255,123,62,.2))}
+.brand img{width:26px; height:26px; filter: drop-shadow(0 0 6px rgba(255,123,62,.2))}
 .menu{margin-left:auto; display:flex; gap:.75rem; list-style:none; padding:0}
 .menu a{color:var(--ink); text-decoration:none; padding:.35rem .7rem; border:1px solid transparent; border-radius:.45rem}
-.menu a:hover{border-color:#3b2f1a; background:#0e0f14}
+.menu a.active, .menu a:hover{border-color:#3b2f1a; background:#0e0f14}
 
-.hero{position:relative; min-height:90vh; display:grid; place-items:center; overflow:hidden}
+.hero{position:relative; min-height:88vh; display:grid; place-items:center; overflow:hidden}
 .hero .corners{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.2; mix-blend-mode:overlay; pointer-events:none}
 .hero .sigil{position:absolute; right:5%; bottom:8%; width:min(26vw, 280px); opacity:.12; filter: drop-shadow(0 8px 24px #000)}
 #embers{position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:1}
-.hero-inner{max-width:var(--maxw); margin:0 auto; padding:3.5rem 1rem; position:relative; z-index:2}
+.hero-inner{max-width:var(--maxw); margin:0 auto; padding:3.5rem 1rem; position:relative; z-index:2; text-align:center}
 .title{margin:0; font-family:Cinzel, serif; font-weight:900; letter-spacing:.04em; line-height:1.05; font-size:clamp(2rem, 1.2rem + 4vw, 4rem)}
 .subtitle{margin:.35rem 0 1.25rem; color:var(--muted)}
-.cta{display:flex; flex-wrap:wrap; gap:.6rem}
+.cta{display:flex; flex-wrap:wrap; gap:.6rem; justify-content:center}
 .btn{--shadow:6px; background:linear-gradient(180deg, #201a12, #14110c); color:var(--ink); border:1px solid #3b2f1a; text-decoration:none; padding:.7rem 1rem; border-radius:.5rem; font-weight:800; display:inline-flex; align-items:center; gap:.6rem; box-shadow: var(--shadow) var(--shadow) 0 rgba(0,0,0,.75)}
 .btn:hover{transform:translate(-1px,-1px); box-shadow: calc(var(--shadow)+1px) calc(var(--shadow)+1px) 0 rgba(0,0,0,.8)}
 .btn.gold{background: linear-gradient(180deg, #6b5830, #3b2f1a); color:#f2e7ce}
 
-.about-card{position:absolute; top:24px; right:24px; max-width:360px; background:linear-gradient(180deg, #15161b, #0f1014); border:1px solid #3b2f1a; border-radius:1rem; padding:1rem; box-shadow:0 10px 40px rgba(0,0,0,.55)}
-.about-title{margin:.25rem 0 .25rem; font-family:Cinzel, serif; font-weight:800; color:var(--gold)}
-.about-text{margin:0; color:var(--muted)}
-
 main{position:relative; z-index:2}
 .container{max-width:var(--maxw); margin:0 auto; padding:0 1rem}
-.section{padding:3rem 0}
-.section h2{font-family:Cinzel, serif; color:var(--gold); margin:0 0 1rem}
+.page{padding:2.2rem 0 3.2rem}
+.page h1{font-family:Cinzel, serif; letter-spacing:.02em; margin:0 0 .6rem}
+.section{padding:1.2rem 0}
+.section h2{font-family:Cinzel, serif; color:var(--gold); margin:0 0 .6rem}
 .divider{display:block; width:240px; opacity:.4; margin:.25rem 0 1rem}
 .panel{background: linear-gradient(180deg, #15161b, #0f1014); border:1px solid #3b2f1a; border-radius:1rem; padding:1rem 1rem}
-.kh{font-family:Cinzel, serif; color:#d8cfb7; margin:.25rem 0 .5rem}
-.mb{margin-bottom:1rem}
 
 .grid{display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:1rem}
 .card{background:#0f1014; border:1px solid #2e2517; border-radius:.8rem; padding:1rem; display:flex; flex-direction:column; gap:.5rem}
@@ -72,8 +68,3 @@ main{position:relative; z-index:2}
 .copy{cursor:pointer; color:#f2e7ce; background:#2a2215; border:1px solid #3b2f1a; border-radius:.35rem; padding:.25rem .45rem}
 
 footer{padding:2rem 1rem; color:var(--muted); text-align:center}
-
-@media (max-width: 900px){
-  .about-card{position:static; margin:1rem auto 0}
-  .hero-inner{padding-top:2rem}
-}
