@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <symbol id="flake" viewBox="0 0 64 64">
-    <g fill="currentColor">
-      <path d="M30 4h4v56h-4z"/>
-      <path d="M10 14l2.8-2.8L32 30l19.2-18.8L54 14 34 33v0l20 19.9-2.7 2.9L32 34 12.7 55.8 10 53 30 33v0L10 14z"/>
-    </g>
-  </symbol>
-</svg>
