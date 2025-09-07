@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0b0e"/>
+      <stop offset="1" stop-color="#0e0f14"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g opacity=".25">
+    <circle cx="900" cy="100" r="180" fill="#ff7b3e"/>
+  </g>
+  <g fill="none" stroke="#c6a767" stroke-width="3" opacity=".7">
+    <rect x="40" y="40" width="1120" height="550" rx="16"/>
+    <path d="M100 110 H1100"/>
+    <path d="M600 80 v60"/>
+  </g>
+  <text x="600" y="220" font-family="Cinzel, serif" font-size="64" fill="#e9e1cf" text-anchor="middle">Hasan Çatalgöl</text>
+  <text x="600" y="280" font-family="Inter, sans-serif" font-size="28" fill="#b8b2a3" text-anchor="middle">Agentic AI • ML • RL • OR • Data Engineering</text>
+  <text x="600" y="360" font-family="Inter, sans-serif" font-size="22" fill="#e9e1cf" text-anchor="middle">Dark fantasy–style portfolio</text>
+  <g fill="#c6a767" opacity=".9">
+    <path d="M560 420 h80 v24 h-80z"/>
+  </g>
+  <text x="600" y="438" font-family="Cinzel, serif" font-size="18" fill="#0f1014" text-anchor="middle">VIEW PORTFOLIO</text>
+</svg>

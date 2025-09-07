@@ -4,103 +4,24 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hasan Çatalgöl — Dark Souls–Style Portfolio</title>
-  <meta name="description" content="Hasan Çatalgöl • Dark fantasy–styled portfolio with About, Projects, Experience, Certifications, and Contact." />
+  <meta name="description" content="Dark fantasy–styled portfolio with About, Projects, Experience, Certifications, and Contact." />
+  <link rel="icon" href="assets/favicon.svg">
+  <meta property="og:title" content="Hasan Çatalgöl — Portfolio" />
+  <meta property="og:description" content="Agentic AI • ML • RL • OR • Data Eng" />
+  <meta property="og:image" content="assets/og-image.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0a0b0e;          /* abyss black */
-      --bg-2:#0e0f14;        /* near-black */
-      --ink:#e9e1cf;         /* parchment ink */
-      --muted:#b8b2a3;
-      --gold:#c6a767;        /* aged gold */
-      --ember:#ff7b3e;       /* ember orange */
-      --accent:#7f6b3b;      /* brass */
-      --panel:#14151b;       /* slate */
-      --border:#2f2a1c;      /* dark brass */
-      --red:#9b2d2d;
-      --maxw:1200px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; color:var(--ink); background:
-        radial-gradient(1600px 900px at 50% -20%, rgba(198,167,103,.15), transparent 70%),
-        radial-gradient(1200px 600px at 10% 10%, rgba(255,123,62,.07), transparent 60%),
-        linear-gradient(180deg, var(--bg), var(--bg-2));
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-      line-height:1.65;
-      overflow-x:hidden;
-    }
-    .noise{position:fixed; inset:0; pointer-events:none; mix-blend-mode:soft-light; opacity:.25; background:
-      repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, rgba(0,0,0,.02) 2px 4px);
-      z-index:0}
-    header{position:sticky; top:0; z-index:20; border-bottom:1px solid #201d16; background:linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,.3)); backdrop-filter:blur(8px)}
-    .nav{max-width:var(--maxw); margin:0 auto; padding:.75rem 1rem; display:flex; align-items:center; gap:1rem}
-    .brand{display:flex; align-items:center; gap:.6rem; text-decoration:none; color:var(--ink)}
-    .brand .mark{width:26px; height:26px; border-radius:50%; background: radial-gradient(circle at 40% 40%, #ffb98d, #b34a1d 60%, #000 61%); box-shadow:0 0 18px rgba(255,123,62,.3)}
-    .brand span{font-family:Cinzel, serif; font-weight:800; letter-spacing:.04em}
-    .menu{margin-left:auto; display:flex; gap:.75rem; list-style:none; padding:0}
-    .menu a{color:var(--ink); text-decoration:none; padding:.35rem .7rem; border:1px solid transparent; border-radius:.45rem}
-    .menu a:hover{border-color:#3b2f1a; background:#0e0f14}
-
-    .hero{position:relative; min-height:90vh; display:grid; place-items:center; overflow:hidden}
-    #embers{position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:1}
-    .hero-inner{max-width:var(--maxw); margin:0 auto; padding:3.5rem 1rem; position:relative; z-index:2}
-    .title{margin:0; font-family:Cinzel, serif; font-weight:900; letter-spacing:.04em; line-height:1.05; font-size:clamp(2rem, 1.2rem + 4vw, 4rem)}
-    .subtitle{margin:.35rem 0 1.25rem; color:var(--muted)}
-    .cta{display:flex; flex-wrap:wrap; gap:.6rem}
-    .btn{--shadow:6px; background:linear-gradient(180deg, #201a12, #14110c); color:var(--ink); border:1px solid #3b2f1a; text-decoration:none; padding:.7rem 1rem; border-radius:.5rem; font-weight:800; display:inline-flex; align-items:center; gap:.6rem; box-shadow: var(--shadow) var(--shadow) 0 rgba(0,0,0,.75)}
-    .btn:hover{transform:translate(-1px,-1px); box-shadow: calc(var(--shadow)+1px) calc(var(--shadow)+1px) 0 rgba(0,0,0,.8)}
-    .btn.gold{background: linear-gradient(180deg, #6b5830, #3b2f1a); color:#f2e7ce}
-
-    /* About card pinned top-right */
-    .about-card{position:absolute; top:24px; right:24px; max-width:360px; background:linear-gradient(180deg, #15161b, #0f1014); border:1px solid #3b2f1a; border-radius:1rem; padding:1rem; box-shadow:0 10px 40px rgba(0,0,0,.55)}
-    .about-title{margin:.25rem 0 .25rem; font-family:Cinzel, serif; font-weight:800; color:var(--gold)}
-    .about-text{margin:0; color:var(--muted)}
-
-    /* Sections */
-    main{position:relative; z-index:2}
-    .container{max-width:var(--maxw); margin:0 auto; padding:0 1rem}
-    .section{padding:3rem 0}
-    .section h2{font-family:Cinzel, serif; color:var(--gold); margin:0 0 1rem}
-    .panel{background: linear-gradient(180deg, #15161b, #0f1014); border:1px solid #3b2f1a; border-radius:1rem; padding:1rem 1rem}
-
-    .grid{display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:1rem}
-    .card{background:#0f1014; border:1px solid #2e2517; border-radius:.8rem; padding:1rem; display:flex; flex-direction:column; gap:.5rem}
-    .card h3{margin:.2rem 0 .1rem; font-family:Cinzel, serif;}
-    .card p{margin:0; color:var(--muted)}
-    .card a{margin-top:auto; align-self:flex-start; color:#f2e7ce; text-decoration:none; border:1px solid #3b2f1a; padding:.45rem .65rem; border-radius:.4rem; background:#14110c}
-    .card a:hover{background:#1a1510}
-    .tag{display:inline-block; font-size:.8rem; color:#f2e7ce; background:#2a2215; border:1px solid #3b2f1a; padding:.1rem .45rem; border-radius:.35rem}
-
-    /* Timeline (Experience) */
-    .timeline{display:grid; gap:1rem; position:relative}
-    .timeline::before{content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:#2e2517}
-    .t-item{position:relative; padding-left:2rem}
-    .t-item::before{content:""; position:absolute; left:4px; top:.35rem; width:12px; height:12px; border-radius:50%; background:radial-gradient(circle at 30% 30%, #ffb98d, #b34a1d); border:1px solid #3b2f1a}
-    .t-role{margin:0; font-weight:800}
-    .t-meta{margin:.15rem 0 .4rem; color:var(--muted)}
-
-    /* Contact */
-    .contact-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:.8rem}
-    .chip{display:flex; align-items:center; gap:.6rem; background:#0f1014; border:1px solid #2e2517; border-radius:.7rem; padding:.6rem .8rem}
-    .copy{cursor:pointer; color:#f2e7ce; background:#2a2215; border:1px solid #3b2f1a; border-radius:.35rem; padding:.25rem .45rem}
-
-    footer{padding:2rem 1rem; color:var(--muted); text-align:center}
-
-    @media (max-width: 900px){
-      .about-card{position:static; margin:1rem auto 0}
-      .hero-inner{padding-top:2rem}
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
   <header>
     <nav class="nav" aria-label="primary">
-      <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span><span>Hasan Çatalgöl</span></a>
+      <a class="brand" href="#top" aria-label="Home">
+        <img class="mark" src="assets/crest.svg" alt="" width="26" height="26" />
+        <span>Hasan Çatalgöl</span>
+      </a>
       <ul class="menu">
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -112,9 +33,11 @@
   </header>
 
   <section id="top" class="hero" aria-label="Hero">
+    <img class="corners" src="assets/ornate-corners.svg" alt="" aria-hidden="true" />
+    <img class="sigil" src="assets/sigil.svg" alt="" aria-hidden="true" />
     <canvas id="embers" aria-hidden="true"></canvas>
     <div class="hero-inner">
-      <h1 class="title">Into the Abyss: <span style="color:var(--gold)">Data & AI</span> by Hasan Çatalgöl</h1>
+      <h1 class="title">Into the Abyss: <span class="gold">Data & AI</span> by Hasan Çatalgöl</h1>
       <p class="subtitle">Agentic AI • ML • RL • OR • Data Engineering</p>
       <div class="cta">
         <a class="btn gold" href="#projects">Browse Projects</a>
@@ -132,9 +55,10 @@
     <div class="container">
       <section id="projects" class="section">
         <h2>Projects</h2>
+        <img class="divider" src="assets/ornate-divider.svg" alt="" />
         <div class="panel">
-          <h3 style="margin:.5rem 0 1rem">Agentic AI</h3>
-          <div class="grid" style="margin-bottom:1rem">
+          <h3 class="kh">Agentic AI</h3>
+          <div class="grid mb">
             <article class="card"><span class="tag">TypeScript</span><h3>LangGraph Examples</h3><p>Training and TS conversions for LangGraph course demos.</p><a href="https://github.com/hasancatalgol/langgraph" target="_blank">Open</a></article>
             <article class="card"><span class="tag">MCP</span><h3>Model Context Protocol</h3><p>CLI-friendly site log bot with MCP TS SDK.</p><a href="https://github.com/hasancatalgol/model-context-protocol" target="_blank">Open</a></article>
             <article class="card"><span class="tag">Python</span><h3>Agent Communication Protocol</h3><p>Minimal ACP server + curl‑ready examples.</p><a href="https://github.com/hasancatalgol/agent-communication-protocol" target="_blank">Open</a></article>
@@ -142,8 +66,8 @@
             <article class="card"><span class="tag">Python</span><h3>Agent Network Protocol</h3><p>ANP experiments & negotiation scripts.</p><a href="https://github.com/hasancatalgol/agent-network-protocol" target="_blank">Open</a></article>
           </div>
 
-          <h3 style="margin:.5rem 0 1rem">Machine Learning</h3>
-          <div class="grid" style="margin-bottom:1rem">
+          <h3 class="kh">Machine Learning</h3>
+          <div class="grid mb">
             <article class="card"><span class="tag">Python</span><h3>Linear Regression Diagnostics</h3><p>Assumption checks — linearity, independence, homoscedasticity, normality.</p><a href="https://github.com/hasancatalgol/linear-regression" target="_blank">Open</a></article>
             <article class="card"><span class="tag">R / Shiny</span><h3>KNN Classification</h3><p>Iris Setosa classification with renv‑managed environment.</p><a href="https://github.com/hasancatalgol/knn-classification" target="_blank">Open</a></article>
             <article class="card"><span class="tag">Python</span><h3>Random Forest</h3><p>Bank marketing predictions in R/Python.</p><a href="https://github.com/hasancatalgol/random-forest-classification" target="_blank">Open</a></article>
@@ -156,35 +80,35 @@
             <article class="card"><span class="tag">Streamlit</span><h3>Persona App</h3><p>Streamlit UI for persona visuals.</p><a href="https://github.com/hasancatalgol/level_based_persona_streamlit" target="_blank">Open</a></article>
           </div>
 
-          <h3 style="margin:.5rem 0 1rem">Reinforcement Learning</h3>
-          <div class="grid" style="margin-bottom:1rem">
+          <h3 class="kh">Reinforcement Learning</h3>
+          <div class="grid mb">
             <article class="card"><span class="tag">Bandits</span><h3>N‑Armed Bandit</h3><p>ε‑greedy, Softmax, UCB1, Thompson sampling.</p><a href="https://github.com/hasancatalgol/rl-multi-armed-bandit-problem" target="_blank">Open</a></article>
             <article class="card"><span class="tag">Minimax</span><h3>Alpha‑Beta Pruning</h3><p>Classic minimax with alpha‑beta.</p><a href="https://github.com/hasancatalgol/rl-alpha-beta-pruning" target="_blank">Open</a></article>
             <article class="card"><span class="tag">Game</span><h3>Tic‑Tac‑Toe</h3><p>Pygame implementation for teaching.</p><a href="https://github.com/hasancatalgol/rl-tic-tac-toe" target="_blank">Open</a></article>
             <article class="card"><span class="tag">RL</span><h3>Q‑Learning Checkers</h3><p>Moves recorded to Postgres for analysis.</p><a href="https://github.com/hasancatalgol/checkers-qlearning" target="_blank">Open</a></article>
           </div>
 
-          <h3 style="margin:.5rem 0 1rem">Fuzzy Logic</h3>
-          <div class="grid" style="margin-bottom:1rem">
+          <h3 class="kh">Fuzzy Logic</h3>
+          <div class="grid mb">
             <article class="card"><span class="tag">Mamdani</span><h3>Fuzzy Heart Rate</h3><p>Age‑aware HR & symptoms → risk with Mamdani & Sugeno.</p><a href="https://github.com/hasancatalgol/fl-heart-rate" target="_blank">Open</a></article>
             <article class="card"><span class="tag">Clustering</span><h3>C‑Means Clustering</h3><p>scikit‑fuzzy clustering walkthrough.</p><a href="https://github.com/hasancatalgol/fl-cmeans-clustering" target="_blank">Open</a></article>
           </div>
 
-          <h3 style="margin:.5rem 0 1rem">Data Engineering</h3>
-          <div class="grid" style="margin-bottom:1rem">
+          <h3 class="kh">Data Engineering</h3>
+          <div class="grid mb">
             <article class="card"><span class="tag">Streaming</span><h3>Real‑time Flow</h3><p>MSSQL → Debezium → Kafka → Flink → Postgres.</p><a href="https://github.com/hasancatalgol/real-time-flow" target="_blank">Open</a></article>
             <article class="card"><span class="tag">Batch</span><h3>Iceflow Pipeline</h3><p>Airflow 3, Spark, Iceberg, MinIO, Trino, Hive.</p><a href="https://github.com/hasancatalgol/iceflow-pipeline" target="_blank">Open</a></article>
           </div>
 
-          <h3 style="margin:.5rem 0 1rem">Operational Research</h3>
-          <div class="grid" style="margin-bottom:1rem">
+          <h3 class="kh">Operational Research</h3>
+          <div class="grid mb">
             <article class="card"><span class="tag">LP</span><h3>Linear Programming</h3><p>Pyomo LP for two‑product, resource‑cap problem.</p><a href="https://github.com/hasancatalgol/linear-programming" target="_blank">Open</a></article>
             <article class="card"><span class="tag">NLP</span><h3>Nonlinear Programming</h3><p>Hydropower reservoir optimization with rich constraints & visuals.</p><a href="https://github.com/hasancatalgol/non-linear-programming" target="_blank">Open</a></article>
             <article class="card"><span class="tag">QP</span><h3>Quadratic Programming</h3><p>Tracking‑error portfolio optimization (convex QP).</p><a href="https://github.com/hasancatalgol/quadratic-programming" target="_blank">Open</a></article>
           </div>
 
-          <h3 style="margin:.5rem 0 1rem">Algorithms & Meta‑heuristics</h3>
-          <div class="grid" style="margin-bottom:1rem">
+          <h3 class="kh">Algorithms & Meta‑heuristics</h3>
+          <div class="grid mb">
             <article class="card"><span class="tag">GA</span><h3>Knapsack (PyGAD)</h3><p>Max value vs. capacity — GA baseline.</p><a href="https://github.com/hasancatalgol/ga-knapsack-optimization" target="_blank">Open</a></article>
             <article class="card"><span class="tag">GA</span><h3>N‑Queens (PyGAD)</h3><p>Version‑robust GA with plots.</p><a href="https://github.com/hasancatalgol/ga-nqueens-problem" target="_blank">Open</a></article>
             <article class="card"><span class="tag">GA</span><h3>Traveling Salesman</h3><p>TSPLIB‑style GA operators.</p><a href="https://github.com/hasancatalgol/ga-traveling-salesman-problem" target="_blank">Open</a></article>
@@ -192,7 +116,7 @@
             <article class="card"><span class="tag">PSO</span><h3>Particle Swarm Optimization</h3><p>PSO primer & objective landscapes.</p><a href="https://github.com/hasancatalgol/ds-particle-swarm-optimization" target="_blank">Open</a></article>
           </div>
 
-          <h3 style="margin:.5rem 0 1rem">Time Series (WIP)</h3>
+          <h3 class="kh">Time Series (WIP)</h3>
           <div class="grid">
             <article class="card"><span class="tag">WIP</span><h3>Autoregressive Models</h3><p>AR / ARX playground.</p><a href="#" aria-disabled="true" onclick="return false">Soon</a></article>
             <article class="card"><span class="tag">WIP</span><h3>ARIMA Family</h3><p>ARIMA / SARIMA examples.</p><a href="#" aria-disabled="true" onclick="return false">Soon</a></article>
@@ -202,18 +126,18 @@
 
       <section id="experience" class="section">
         <h2>Experience</h2>
+        <img class="divider" src="assets/ornate-divider.svg" alt="" />
         <div class="panel">
           <div class="timeline">
             <div class="t-item">
-              <p class="t-role">Data/AI Engineer — <span style="color:var(--gold)">Freelance / Projects</span></p>
-              <p class="t-meta">2023–Present • Istanbul (Remote)
-              </p>
+              <p class="t-role">Data/AI Engineer — <span class="gold">Freelance / Projects</span></p>
+              <p class="t-meta">2023–Present • Istanbul (Remote)</p>
               <p>Building ML pipelines, RL demos, and agentic prototypes; standing up MLflow/DB stacks and streaming data flows.</p>
             </div>
             <div class="t-item">
-              <p class="t-role">Operations & Analytics — <span style="color:var(--gold)">Previous Roles</span></p>
+              <p class="t-role">Operations & Analytics — <span class="gold">Previous Roles</span></p>
               <p class="t-meta">—</p>
-              <p>Process optimization, analytics, and data tooling. (Replace with your specific past roles & highlights.)</p>
+              <p>Process optimization, analytics, and data tooling. (Replace with specific past roles & highlights.)</p>
             </div>
           </div>
         </div>
@@ -221,6 +145,7 @@
 
       <section id="certs" class="section">
         <h2>Certifications</h2>
+        <img class="divider" src="assets/ornate-divider.svg" alt="" />
         <div class="panel">
           <div class="grid">
             <article class="card"><h3>Example — Azure DP‑100</h3><p>Designing and Implementing a Data Science Solution on Azure.</p><p class="muted">(Swap with real certifications.)</p></article>
@@ -232,6 +157,7 @@
 
       <section id="contact" class="section">
         <h2>Contact</h2>
+        <img class="divider" src="assets/ornate-divider.svg" alt="" />
         <div class="panel">
           <div class="contact-grid">
             <div class="chip">🇹🇷 <strong>+90 545 385 78 98</strong> <button class="copy" data-copy="+905453857898">Copy</button></div>
@@ -244,44 +170,9 @@
   </main>
 
   <footer>
-    <p>© <span id="year"></span> Hasan Çatalgöl • This site is an original homage to dark‑fantasy aesthetics (unaffiliated).</p>
+    <p>© <span id="year"></span> Hasan Çatalgöl • Original homage to dark‑fantasy aesthetics (unaffiliated).</p>
   </footer>
 
-  <script>
-    // Ember particles
-    (function(){
-      const c = document.getElementById('embers');
-      const x = c.getContext('2d');
-      let w,h,embers=[];
-      function resize(){
-        c.width = w = c.offsetWidth; c.height = h = c.offsetHeight;
-        embers = Array.from({length: Math.max(80, Math.floor(w*h/30000))}, () => ({
-          x: Math.random()*w, y: Math.random()*h, r: Math.random()*1.8 + .6,
-          s: Math.random()*0.4 + 0.2, o: Math.random()*0.6 + 0.2
-        }));
-      }
-      window.addEventListener('resize', resize, {passive:true}); resize();
-      function tick(){
-        x.clearRect(0,0,w,h);
-        for(const p of embers){
-          x.globalAlpha = p.o; x.fillStyle = '#ff7b3e';
-          x.beginPath(); x.arc(p.x, p.y, p.r, 0, Math.PI*2); x.fill();
-          x.fillStyle = '#ffb98d'; x.globalAlpha = p.o*0.4; x.beginPath(); x.arc(p.x-1, p.y-1, p.r*0.6, 0, Math.PI*2); x.fill();
-          p.y -= p.s; p.x += Math.sin(p.y*0.03)*0.2; if(p.y < -5){ p.y = h+5; p.x = Math.random()*w; }
-        }
-        x.globalAlpha = 1; requestAnimationFrame(tick);
-      } tick();
-    })();
-
-    // Copy buttons
-    document.querySelectorAll('.copy').forEach(btn=>{
-      btn.addEventListener('click', async ()=>{
-        try{ await navigator.clipboard.writeText(btn.dataset.copy); btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy', 1200); } catch(e){ btn.textContent='Select & Copy'; setTimeout(()=>btn.textContent='Copy', 1800); }
-      });
-    });
-
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
